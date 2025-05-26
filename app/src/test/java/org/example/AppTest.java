@@ -12,11 +12,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 class AppTest {
   @Autowired PersonRepository personRepository;
 
-  static Person person(final String name, final String email, final int age) {
+  static Person person(
+      final String name, final String email, final int age, final String someOtherAttribute) {
     Person person = new Person();
     person.setName(name);
     person.setEmail(email);
     person.setAge(age);
+    person.setSomeOtherAttribute(someOtherAttribute);
     return person;
   }
 
@@ -24,12 +26,12 @@ class AppTest {
   void test() {
     personRepository.saveAll(
         List.of(
-            person("Foo1", "foo1@email.com", 41),
-            person("Bar1", "bar1@email.com", 21),
-            person("Foo2", "foo2@email.com", 42),
-            person("Bar2", "bar2@email.com", 22),
-            person("Foo3", "foo3@email.com", 43),
-            person("Bar3", "bar3@email.com", 23)));
+            person("Foo1", "foo1@email.com", 41, "abc"),
+            person("Foo2", "foo2@email.com", 42, "def"),
+            person("Foo3", "foo3@email.com", 43, "ghi"),
+            person("Bar1", "bar1@email.com", 21, "jkl"),
+            person("Bar2", "bar2@email.com", 22, "mno"),
+            person("Bar3", "bar3@email.com", 23, "pqr")));
 
     assertThatNoException()
         .isThrownBy(

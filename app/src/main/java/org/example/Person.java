@@ -13,6 +13,9 @@ public class Person {
   private String name;
 
   @Convert(converter = ValueEncryptor.class)
+  private String someOtherAttribute;
+
+  @Convert(converter = ValueEncryptor.class)
   private String email;
 
   private int age;
@@ -47,5 +50,13 @@ public class Person {
 
   public void setAge(final int age) {
     this.age = age;
+  }
+
+  public String getSomeOtherAttribute() {
+    return someOtherAttribute;
+  }
+
+  public void setSomeOtherAttribute(final String someOtherAttribute) {
+    this.someOtherAttribute = someOtherAttribute;
   }
 }
