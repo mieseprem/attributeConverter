@@ -33,6 +33,8 @@ class AppTest {
             person("Bar2", "bar2@email.com", 22, "mno"),
             person("Bar3", "bar3@email.com", 23, "pqr")));
 
+    System.out.println("==================");
+
     assertThatNoException()
         .isThrownBy(
             () ->

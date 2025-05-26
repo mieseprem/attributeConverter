@@ -2,7 +2,6 @@ package org.example;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-
 import java.util.Base64;
 
 @Converter
@@ -16,7 +15,7 @@ public class ValueEncryptor implements AttributeConverter<String, String> {
       return null;
     }
     var encoded = encoder.encodeToString(attribute.getBytes());
-    System.out.println("from '" + attribute + "' to: '" + encoded + "'");
+    System.out.println("'encrypt' > from '" + attribute + "' to: '" + encoded + "'");
     return encoded;
   }
 
@@ -26,7 +25,7 @@ public class ValueEncryptor implements AttributeConverter<String, String> {
       return null;
     }
     var string = new String(decoder.decode(dbData));
-    System.out.println("from '" + dbData + "' to: '" + string + "'");
+    System.out.println("'decrypt' < from '" + dbData + "' to: '" + string + "'");
     return string;
   }
 }
