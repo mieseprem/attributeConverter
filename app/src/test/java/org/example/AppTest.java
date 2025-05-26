@@ -22,7 +22,14 @@ class AppTest {
 
   @Test
   void test() {
-    setupTable();
+    personRepository.saveAll(
+        List.of(
+            person("Foo1", "foo1@email.com", 41),
+            person("Bar1", "bar1@email.com", 21),
+            person("Foo2", "foo2@email.com", 42),
+            person("Bar2", "bar2@email.com", 22),
+            person("Foo3", "foo3@email.com", 43),
+            person("Bar3", "bar3@email.com", 23)));
 
     assertThatNoException()
         .isThrownBy(
@@ -36,16 +43,5 @@ class AppTest {
                     .hasSize(3)
                     .extracting(Person::getEmail)
                     .allSatisfy(email -> assertThat(email).startsWith("bar")));
-  }
-
-  private void setupTable() {
-    personRepository.saveAll(
-        List.of(
-            person("Foo1", "foo1@email.com", 41),
-            person("Bar1", "bar1@email.com", 21),
-            person("Foo2", "foo2@email.com", 42),
-            person("Bar2", "bar2@email.com", 22),
-            person("Foo3", "foo3@email.com", 43),
-            person("Bar3", "bar3@email.com", 23)));
   }
 }
